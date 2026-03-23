@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankur Singh | Systems & Backend Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/jpeg" href="images/profile.jpeg">
+    <style>
+:root { --accent: #10b981; --bg: #030303; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #edeeef; }
+.code-font { font-family: 'Fira Code', monospace; }
+
+/* Modern Glassmorphism Effect */
+.glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.glass-card:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04); transform: translateY(-5px); }
+
+/* Interactive Elements */
+.gradient-text { background: linear-gradient(135deg, #fff 30%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.timeline-line::after { content: ''; position: absolute; width: 2px; background: linear-gradient(to bottom, #10b981, transparent); top: 0; bottom: 0; left: 20px; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #030303; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+/* ── SKILLS: Layout ── */
+.skills-row1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.skills-row2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 70%;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .skills-row1 { grid-template-columns: 1fr; }
+    .skills-row2 { grid-template-columns: 1fr; max-width: 100%; }
+}
+
+/* ── Skill Card (BIGGER + PREMIUM) ── */
+.skill-card {
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    padding: 2.8rem;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+}
+.skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.07), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.skill-card:hover {
+    border-color: rgba(16,185,129,0.4);
+    background: rgba(16,185,129,0.04);
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(16,185,129,0.1), 0 25px 50px rgba(0,0,0,0.5);
+}
+.skill-card:hover::before { opacity: 1; }
+
+/* ── Skill Items ── */
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.6rem;
+    transition: background 0.25s;
+}
+.skill-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* ── ICON MAGIC (BLACK → COLOR 🔥) ── */
+.skill-item img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    filter: grayscale(100%) brightness(0.8);
+    transition: filter 0.4s ease, transform 0.3s ease;
+}
+
+/* Hover single item */
+.skill-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+}
+
+/* Hover whole card (premium effect) */
+.skill-card:hover .skill-item img {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* Text balance */
+.skill-item span {
+    font-size: 15px;
+}
+
+/* Badge */
+.skill-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+    flex-shrink: 0;
+}
+
+/* ── CERT card image ── */
+.cert-img-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cert-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(20%);
+}
+.glass-card:hover .cert-img-wrap img {
+    transform: scale(1.04);
+    filter: grayscale(0%);
+}
+</style>
+</head>
+<body class="selection:bg-emerald-500/30">
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/90 backdrop-blur-lg px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        
+        <!-- Logo -->
+        <span class="text-xl font-bold tracking-tighter code-font text-white">
+            <span class="text-emerald-400">&gt;_</span> ANKUR<span class="text-emerald-500">.SYS</span>
+        </span>
+
+        <!-- Links (SMOOTHER) -->
+        <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-[0.15em] text-gray-400">
+            <a href="#about"     class="hover:text-emerald-400 transition-colors">About</a>
+            <a href="#skills"    class="hover:text-emerald-400 transition-colors">Skills</a>
+            <a href="#projects"  class="hover:text-emerald-400 transition-colors">Projects</a>
+            <a href="#certs"     class="hover:text-emerald-400 transition-colors">Certificates</a>
+            <a href="#education" class="hover:text-emerald-400 transition-colors">Journey</a>
+        </div>
+
+        <!-- CTA -->
+        <a href="#contact" class="px-5 py-2 border border-emerald-500/40 text-emerald-400 text-xs font-semibold uppercase tracking-widest rounded hover:bg-emerald-500 hover:text-black transition-all">
+            Transmit_Msg
+        </a>
+    </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="pt-36 pb-32 px-6 relative">
+    <div class="max-w-7xl mx-auto relative flex items-center">
+
+        <!-- LEFT CONTENT -->
+        <div class="max-w-xl">
+            <span class="code-font text-emerald-500 text-sm tracking-widest">
+                // System initialization complete...
+            </span>
+
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tight leading-none mt-4">
+                Write Code.<br>
+                <span class="gradient-text">Break Limits.</span><br>
+                Ship&nbsp;Systems.
+            </h1>
+
+            <p class="text-gray-500 text-lg mt-6 leading-relaxed">
+                Computer Science student focused on low-level performance, clean backend architecture, and solving problems that actually matter.
+            </p>
+
+            <!-- CTA -->
+            <div class="mt-10 flex gap-4">
+                <a href="#projects" class="px-6 py-3 bg-emerald-500 text-black font-semibold rounded-lg hover:bg-emerald-400 transition">
+                    View Projects
+                </a>
+                <a href="#contact" class="px-6 py-3 border border-white/20 text-white rounded-lg hover:border-emerald-500 hover:text-emerald-400 transition">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE TERMINAL (IMPROVED) -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block w-[460px]">
+            <div class="bg-black/60 border border-white/10 rounded-xl p-6 backdrop-blur-xl shadow-2xl h-[300px]">
+                
+                <!-- header -->
+                <div class="flex gap-2 mb-5">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                </div>
+
+                <!-- content -->
+                <div class="space-y-2 code-font text-sm">
+                    
+                    <p class="text-gray-400">
+                        <span class="text-emerald-400">ankur@system</span>:~$ boot sequence initiated
+                    </p>
+
+                    <p class="text-gray-500 animate-pulse">
+                        loading modules...
+                    </p>
+
+                    <p class="text-gray-400"><span class="text-blue-400">✔</span> memory allocated</p>
+                    <p class="text-gray-400"><span class="text-blue-400">✔</span> threads initialized</p>
+                    <p class="text-gray-400"><span class="text-blue-400">✔</span> api endpoints active</p>
+                    <p class="text-gray-400"><span class="text-blue-400">✔</span> database connected</p>
+                    <p class="text-gray-400"><span class="text-blue-400">✔</span> system stable</p>
+
+                    <p class="text-emerald-400 mt-3">
+                        ready to deploy 🚀
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+    <!-- ══════════════ ABOUT ══════════════ -->
+    <section id="about" class="py-24 px-6 border-y border-white/5 bg-white/[0.01]">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+
+        <!-- LEFT -->
+        <div class="relative group md:sticky md:top-28">
+
+            <!-- Image -->
+            <div class="relative aspect-[3/4] max-h-[650px] w-full max-w-[420px] overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+                
+                <img src="images/profile.jpeg" alt="Ankur Singh"
+                     class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700">
+
+                <!-- overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+
+                <!-- Badge -->
+                <div class="absolute bottom-4 right-4 code-font bg-emerald-500/90 backdrop-blur-md text-black px-4 py-2 text-xs font-bold rounded-md shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+                    MODE: LEGEND
+                </div>
+            </div>
+
+            <!-- Pills (NOW INSIDE LEFT COLUMN ✅) -->
+            <div class="flex gap-3 mt-8 flex-wrap">
+                <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[11px] text-gray-400 code-font">
+                    <span class="text-emerald-400 font-bold">CGPA</span> 8.9
+                </div>
+                <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[11px] text-gray-400 code-font">
+                    <span class="text-emerald-400 font-bold">LPU</span> Punjab
+                </div>
+                <div class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[11px] text-gray-400 code-font">
+                    <span class="text-emerald-400 font-bold">STATUS</span> Open to Work
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="space-y-10 pt-2">
+
+            <!-- Block 1 -->
+            <div>
+                <span class="code-font text-emerald-500 text-[10px] tracking-widest uppercase">// about.init()</span>
+                <h2 class="text-3xl font-bold italic mt-2 mb-5">The Engineer's Mindset</h2>
+
+                <div class="space-y-4 text-gray-400 leading-relaxed text-base">
+                    <p>
+                        I don't just write code — <span class="text-white font-medium">I design systems</span>. My focus lies in the internal mechanics of software: every data structure chosen and every API endpoint built must be optimized for speed, clarity, and reliability.
+                    </p>
+                    <p>
+                        Whether managing memory manually in C++ or architecting clean middleware layers in Django, I prioritize correctness and performance over shortcuts. I believe great engineering is about <span class="text-white font-medium">understanding the why</span> before writing the how.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5"></div>
+
+            <!-- Block 2 -->
+            <div>
+                <span class="code-font text-blue-400 text-[10px] tracking-widest uppercase">// current_focus.exe</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">What I'm Building Towards</h3>
+
+                <div class="space-y-3 text-gray-400 text-base leading-relaxed">
+                    <p>
+                        Right now I'm deep in <span class="text-white font-medium">backend systems</span> — building a full-stack coding platform with Django, async task queues, and a sandboxed code execution engine.
+                    </p>
+                    <p>
+                        Alongside that, I'm strengthening my core system design skills — diving into <span class="text-white font-medium">low-level design (LLD)</span> and <span class="text-white font-medium">multithreading in C++</span>, while working with <span class="text-white font-medium">Django REST Framework</span> to build clean and scalable APIs. I'm also exploring how these backend systems can integrate with <span class="text-white font-medium">machine learning workflows</span>.
+                    </p>
+                </div>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase rounded-full">Backend Dev</span>
+                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-bold uppercase rounded-full">Systems Design</span>
+                    <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[11px] font-bold uppercase rounded-full">DSA</span>
+                    <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-[11px] font-bold uppercase rounded-full">ML Integration</span>
+                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-gray-400 text-[11px] font-bold uppercase rounded-full">Open Source</span>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5"></div>
+
+            <!-- Block 3 -->
+            <div>
+                <span class="code-font text-purple-400 text-[10px] tracking-widest uppercase">// process: off_duty</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">When I'm Not Coding</h3>
+
+                <p class="text-base border-l-2 border-emerald-500 pl-5 py-1 text-gray-300 leading-relaxed mb-5">
+                Beyond the terminal, I find my balance in simple moments — occasionally getting lost in books, walking alone under an open blue sky, randomly stepping out with no plan, fooling around with friends, or just staring at the stars and letting thoughts wander.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="bg-white/[0.03] border border-white/8 rounded-xl p-3 text-center">🌌</div>
+                    <div class="bg-white/[0.03] border border-white/8 rounded-xl p-3 text-center">🎮</div>
+                    <div class="bg-white/[0.03] border border-white/8 rounded-xl p-3 text-center">📚</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- ══════════════ SKILLS ══════════════ -->
+    <section id="skills" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-2">Technical Arsenal</h2>
+            <p class="text-gray-600 code-font text-sm mb-16">~/skills --all-categories</p>
+
+            <!-- Row 1: 3 cards -->
+            <div class="skills-row1">
+
+                <!-- 01. Languages -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-500 mb-6">01. Languages</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/cplusplus/10b981" alt="C++">
+                            <span class="text-sm text-gray-200">C++</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/python/3b82f6" alt="Python">
+                            <span class="text-sm text-gray-200">Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/postgresql/a78bfa" alt="SQL">
+                            <span class="text-sm text-gray-200">SQL (PostgreSQL/MySQL)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02. Concepts & Libraries -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-blue-400 mb-6">02. Concepts & Libraries</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <span class="skill-badge text-emerald-400">STL</span>
+                            <span class="text-sm text-gray-200">Standard Template Library</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-blue-400">DSA</span>
+                            <span class="text-sm text-gray-200">Advanced Algorithms</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-purple-400">MT</span>
+                            <span class="text-sm text-gray-200">Multithreading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03. Backend Systems -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-400 mb-6">03. Backend Systems</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/django/10b981" alt="Django">
+                            <span class="text-sm text-gray-200">Django / DRF</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/postman/ef4444" alt="Postman">
+                            <span class="text-sm text-gray-200">Postman API Testing</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">Soon</span>
+                            <span class="text-sm text-gray-400 italic">Dockerization</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /row1 -->
+
+            <!-- Row 2: 2 centred cards -->
+            <div class="skills-row2">
+
+                <!-- 04. Machine Learning -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-yellow-400 mb-6">04. Machine Learning</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/scikitlearn/f97316" alt="Scikit-learn">
+                            <span class="text-sm text-gray-200">Scikit-learn</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/pandas/a78bfa" alt="Pandas">
+                            <span class="text-sm text-gray-200">Pandas</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/numpy/38bdf8" alt="NumPy">
+                            <span class="text-sm text-gray-200">NumPy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05. Environment & Infrastructure -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-6">05. Environment & Infrastructure</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/linux/f9fafb" alt="Linux">
+                            <span class="text-sm text-gray-200">Linux (Kernel/Bash)</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.simpleicons.org/github/f9fafb" alt="GitHub">
+                            <span class="text-sm text-gray-200">Git &amp; CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /row2 -->
+
+        </div>
+    </section>
+
+    <!-- ══════════════ PROJECTS ══════════════ -->
+    <section id="projects" class="py-24 px-6 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 italic">Featured Work</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="glass-card p-10 rounded-3xl group">
+                    <div class="flex justify-between items-start mb-10">
+                        <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        </div>
+                        <span class="text-[10px] code-font text-gray-600">C++ / STL</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Dynamic Heterogeneous Data Structure</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-10">A custom, type-safe container implementing Object-Oriented principles for storing diverse data types efficiently.</p>
+                    <a href="https://github.com/ankursingh23" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:underline">Source Code →</a>
+                </div>
+
+                <div class="glass-card p-10 rounded-3xl group">
+                    <div class="flex justify-between items-start mb-10">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </div>
+                        <span class="text-[10px] code-font text-gray-600">DSA / Algorithms</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">File Compression System</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-10">Lossless data compression tool using Huffman Coding algorithm, reducing file sizes significantly while maintaining integrity.</p>
+                    <a href="https://github.com/ankursingh23" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:underline">Source Code →</a>
+                </div>
+            </div>
+
+            <div class="glass-card p-12 rounded-3xl text-center border-dashed border-white/20">
+                <span class="px-4 py-1 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-widest rounded-full border border-yellow-500/20">Coming Soon</span>
+                <h3 class="text-3xl font-bold mt-6 mb-4">Advanced Coding Platform</h3>
+                <p class="text-gray-500 max-w-2xl mx-auto">Building a full-stack backend-heavy project with Django, Dockerized judge systems, and PostgreSQL.</p>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://github.com/ankursingh23" target="_blank" class="inline-flex items-center px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.3em] rounded-full hover:bg-emerald-500 transition-all shadow-[0_0_40px_rgba(255,255,255,0.05)]">
+                    See More on GitHub
+                    <img src="https://cdn.simpleicons.org/github/black" class="ml-4 w-5 h-5" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CERTIFICATIONS ══════════════ -->
+    <section id="certs" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-2">Certifications</h2>
+            <p class="text-gray-600 code-font text-sm mb-12">~/certs --verified</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Cert 1: GFG 160 -->
+                <!--
+                    IMAGE FILE NAME: cert-gfg-dsa.png
+                    Place this file at: images/cert-gfg-dsa.png
+                -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="cert-img-wrap">
+                        <img src="images/cert-gfg-dsa.png" alt="GFG 160 DSA Certificate">
+                    </div>
+                    <h4 class="font-bold text-lg">GFG 160 – DSA & Algorithms</h4>
+                    <p class="text-xs text-gray-500 mb-1 italic">160 Days of Problem Solving</p>
+                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by GeeksforGeeks</p>
+                    <a href="https://www.geeksforgeeks.org/certificate/26d6164aff50e3599304ef0c4f43a943" target="_blank"
+                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
+                        Verify Credentials
+                    </a>
+                </div>
+
+                <!-- Cert 2: HackerRank SQL -->
+                <!--
+                    IMAGE FILE NAME: cert-hackerrank-sql.png
+                    Place this file at: images/cert-hackerrank-sql.png
+                -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="cert-img-wrap">
+                        <img src="images/cert-hackerrank-sql.png" alt="HackerRank SQL Certificate">
+                    </div>
+                    <h4 class="font-bold text-lg">SQL (Intermediate)</h4>
+                    <p class="text-xs text-gray-500 mb-1 italic">SQL Querying & Optimization</p>
+                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by HackerRank</p>
+                    <a href="https://www.hackerrank.com/certificates/1be2e732a7c0" target="_blank"
+                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
+                        Verify Credentials
+                    </a>
+                </div>
+
+                <!-- Cert 3: Django GFG -->
+                <!--
+                    IMAGE FILE NAME: cert-gfg-django.png
+                    Place this file at: images/cert-gfg-django.png
+                -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col">
+                    <div class="cert-img-wrap">
+                        <img src="images/cert-gfg-django.png" alt="Django Framework Certificate">
+                    </div>
+                    <h4 class="font-bold text-lg">Django Framework Certification</h4>
+                    <p class="text-xs text-gray-500 mb-1 italic">Self-Paced Backend Course</p>
+                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by GeeksforGeeks</p>
+                    <a href="https://www.geeksforgeeks.org/certificate/1aa61a2f372610beac1066db829eb8ce" target="_blank"
+                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
+                        Verify Credentials
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ EDUCATION / JOURNEY ══════════════ -->
+    <section id="education" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-bold mb-20 italic">Education Journey</h2>
+            <div class="relative timeline-line space-y-16">
+                <div class="relative pl-16 journey-item opacity-0 translate-y-8 transition-all duration-700">
+                    <div class="absolute left-[20px] top-3 w-5 h-5 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981]"></div>
+                    <h3 class="text-2xl font-bold mb-2">Lovely Professional University, Punjab</h3>
+                    <p class="text-emerald-500 font-medium text-base">B.Tech (Hons.) Computer Science & Engineering | CGPA: 8.9</p>
+                    <p class="text-gray-600 text-xs uppercase font-bold mt-3 tracking-wide">Aug 2023 - Present</p>
+                </div>
+                <div class="relative pl-16 journey-item opacity-0 translate-y-8 transition-all duration-700" style="transition-delay: 0.15s;">
+                    <div class="absolute left-[20px] top-3 w-5 h-5 bg-gray-800 border-2 border-emerald-500 rounded-full"></div>
+                    <h3 class="text-2xl font-bold mb-2">Police Modern School, Lucknow</h3>
+                    <p class="text-gray-400 text-base italic">INTERMEDIATE | Percentage: 84%</p>
+                    <p class="text-gray-600 text-xs uppercase font-bold mt-3 tracking-wide">Apr 2021 - Jun 2022</p>
+                </div>
+                <div class="relative pl-16 journey-item opacity-0 translate-y-8 transition-all duration-700" style="transition-delay: 0.30s;">
+                    <div class="absolute left-[20px] top-3 w-5 h-5 bg-gray-800 border-2 border-emerald-500 rounded-full"></div>
+                    <h3 class="text-2xl font-bold mb-2">Police Modern School, Lucknow</h3>
+                    <p class="text-gray-400 text-base italic">Matriculation | Percentage: 88%</p>
+                    <p class="text-gray-600 text-xs uppercase font-bold mt-3 tracking-wide">Apr 2019 - Mar 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-emerald-950/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+
+            <!-- LEFT: info + creative social links -->
+            <div>
+                <span class="code-font text-emerald-500 text-[10px] tracking-widest uppercase">// contact.open()</span>
+                <h2 class="text-5xl font-bold italic mt-3 mb-6">Let's build something <span class="text-emerald-500">stable</span>.</h2>
+                <p class="text-gray-500 mb-12 text-base leading-relaxed">
+                    Currently open to internship opportunities where I can contribute to high-performance systems and backend logic. Got an interesting problem? Let's talk.
+                </p>
+
+                <!-- Creative social / contact cards -->
+                <div class="space-y-3">
+
+                    <!-- Email -->
+                    <a href="mailto:ankurrajput2118@gmail.com"
+                       class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-emerald-500/40 hover:bg-emerald-500/[0.04] transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-all">
+                            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-[10px] code-font text-emerald-500 uppercase tracking-[0.15em] mb-0.5">Email_</div>
+                            <div class="text-sm text-gray-300 group-hover:text-white transition-colors truncate">ankurrajput2118@gmail.com</div>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/ankursingh77/" target="_blank"
+                       class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-blue-500/40 hover:bg-blue-500/[0.04] transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-all">
+                            <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-[10px] code-font text-blue-400 uppercase tracking-[0.15em] mb-0.5">LinkedIn_</div>
+                            <div class="text-sm text-gray-300 group-hover:text-white transition-colors">linkedin.com/in/ankursingh77</div>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/ankursingh23" target="_blank"
+                       class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-purple-500/40 hover:bg-purple-500/[0.04] transition-all duration-300">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-all">
+                            <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-[10px] code-font text-purple-400 uppercase tracking-[0.15em] mb-0.5">GitHub_</div>
+                            <div class="text-sm text-gray-300 group-hover:text-white transition-colors">github.com/ankursingh23</div>
+                        </div>
+                        <svg class="w-4 h-4 text-gray-600 group-hover:text-purple-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: complete terminal-style form -->
+            <div class="glass-card p-8 rounded-3xl relative overflow-hidden border border-emerald-500/10">
+                <!-- fake terminal titlebar -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    <span class="code-font text-[10px] text-gray-600 tracking-widest">message.init()</span>
+                </div>
+
+                <form class="space-y-7" onsubmit="handleFormSubmit(event)">
+                    <!-- Name -->
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] text-emerald-500 code-font tracking-widest">Identity_Input</span>
+                        <input type="text" id="form-name" placeholder="Your Name" required
+                               class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300">
+                    </div>
+                    <!-- Email -->
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] text-emerald-500 code-font tracking-widest">Email_Address</span>
+                        <input type="email" id="form-email" placeholder="name@domain.com" required
+                               class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300">
+                    </div>
+                    <!-- Message -->
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] text-emerald-500 code-font tracking-widest">Message_Data</span>
+                        <textarea id="form-message" rows="4" placeholder="Briefing..." required
+                                  class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300 resize-none"></textarea>
+                    </div>
+                    <!-- Submit -->
+                    <button type="submit" id="form-btn"
+                            class="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] text-[10px] hover:bg-emerald-500 transition-all duration-300 rounded-sm mt-2">
+                        Transmit Message
+                    </button>
+                    <!-- Success state (hidden by default) -->
+                    <div id="form-success" class="hidden text-center py-3 code-font text-emerald-400 text-xs tracking-widest">
+                        ✓ &nbsp;Message transmitted successfully. Standing by.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="py-12 px-6 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-[0.4em] font-medium">
+        <p>&copy; 2026 ANKUR SINGH. All systems nominal. Built with Django & Tailwind</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+
+        // Animate journey items on scroll
+        const journeyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.journey-item').forEach(el => {
+            journeyObserver.observe(el);
+        });
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('form-btn');
+            const success = document.getElementById('form-success');
+            btn.textContent = 'Transmitting...';
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            setTimeout(() => {
+                btn.classList.add('hidden');
+                success.classList.remove('hidden');
+                document.getElementById('form-name').value = '';
+                document.getElementById('form-email').value = '';
+                document.getElementById('form-message').value = '';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

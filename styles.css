@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at 70% 40%, #0ff3 0%, transparent 40%),
+              radial-gradient(circle at 30% 60%, #6a5cff33 0%, transparent 40%),
+              #0a0a14;
+  color: white;
+  padding-top: 80px;
+}
+
+/* Navbar */
+/* Navbar Base */
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 80px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+/* Logo LEFT */
+.logo {
+  justify-self: start;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Links CENTER */
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+/* Empty right space (balance) */
+.navbar::after {
+  content: "";
+}
+.logo span {
+  color: #00f7ff;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 16px;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* Hover Effect */
+.nav-links a:hover {
+  color: #00f7ff;
+}
+
+/* Active Link */
+.nav-links a.active {
+  color: #00f7ff;
+}
+
+/* Underline Animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00f7ff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px;
+}
+
+.hero img {
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #00f7ff;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  background: #00f7ff;
+  color: black;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.btn-outline {
+  border: 2px solid #00f7ff;
+  background: transparent;
+  color: #00f7ff;
+}
+
+/* Sections */
+section {
+  padding: 60px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Cards */
+.card, .project-card, .cert-card {
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00f7ff33;
+}
+
+/* Grid */
+.about-container, .skills-grid, .project-grid, .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+/* Skills */
+.skill {
+  text-align: center;
+  font-size: 30px;
+}
+
+.skill p {
+  margin-top: 10px;
+}
+
+/* Contact */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form input, textarea {
+  padding: 10px;
+  border: none;
+}
+
+.contact-form button {
+  background: #00f7ff;
+  padding: 10px;
+}
+
+/* Social */
+.socials a {
+  margin: 10px;
+  font-size: 25px;
+  color: #00f7ff;
+}
+
+/* Gradient Name */
+.gradient-text {
+  font-size: 60px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00f7ff, #6a5cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Typing Text */
+.typing {
+  color: #00f7ff;
+  font-weight: bold;
+}
+
+/* Buttons Upgrade */
+.btn.glow {
+  background: linear-gradient(45deg, #00f7ff, #6a5cff);
+  color: white;
+  border-radius: 25px;
+  padding: 12px 25px;
+  box-shadow: 0 0 20px #00f7ff;
+}
+
+.btn-outline {
+  border: 2px solid #00f7ff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: #00f7ff;
+}
+
+/* Hero Layout Upgrade */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px;
+}
+
+/* Glow Image */
+.hero img {
+  width: 280px;
+  border-radius: 50%;
+  box-shadow: 0 0 50px #00f7ff;
+}
+
+.hero-text h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.hero-text h1 {
+  font-size: 65px;
+  margin-bottom: 10px;
+}
+
+.hero-text h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  max-width: 500px;
+  line-height: 1.6;
+  color: #aaa;
+}
+
+.hero-img {
+  position: relative;
+}
+
+.hero-img img {
+  width: 320px;
+  border-radius: 50%;
+  border: 6px solid #1a1a2e;
+  box-shadow:
+    0 0 40px #00f7ff,
+    0 0 80px #00f7ff33;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn.glow {
+  background: linear-gradient(45deg, #00f7ff, #6a5cff);
+  box-shadow: 0 0 20px #00f7ff;
+}
+
+.btn.glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #00f7ff;
+}
+
+.btn-outline {
+  border: 2px solid #00f7ff;
+  border-radius: 30px;
+}
+
+.btn-outline:hover {
+  background: #00f7ff;
+  color: black;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 0 100px;
+}
