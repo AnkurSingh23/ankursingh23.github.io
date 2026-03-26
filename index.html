@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
      <link rel="icon" type="image/jpeg" href="images/profile.jpeg"> 
+     
     <style>
 :root { --accent: #10b981; --bg: #030303; }
 body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #edeeef; }
@@ -121,29 +122,218 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
     flex-shrink: 0;
 }
 
-/* ── CERT card image ── */
-.cert-img-wrap {
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.03);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ── CERTIFICATES: Full-width Story Layout ── */
+.cert-heading {
+    letter-spacing: -0.02em;
 }
-.cert-img-wrap img {
+
+.cert-story {
+    position: relative;
+    padding: 5.2rem 0;
+}
+
+.cert-story::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+}
+
+.cert-story:last-of-type::after {
+    display: none;
+}
+
+.cert-tone-1 { background: linear-gradient(120deg, rgba(255,255,255,0.02), transparent 65%); }
+.cert-tone-2 { background: linear-gradient(120deg, rgba(16,185,129,0.05), transparent 72%); }
+
+.cert-title {
+    font-size: clamp(1.55rem, 2.6vw, 2.4rem);
+    line-height: 1.12;
+}
+
+.cert-desc {
+    max-width: 56ch;
+}
+
+.cert-media-wrap {
+    overflow: hidden;
+    min-height: clamp(220px, 28vw, 380px);
+}
+
+.cert-media {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease, filter 0.5s ease;
-    filter: grayscale(20%);
+    transition: transform 0.8s ease;
+    transform: scale(1.02);
 }
-.glass-card:hover .cert-img-wrap img {
-    transform: scale(1.04);
-    filter: grayscale(0%);
+
+.cert-story:hover .cert-media {
+    transform: scale(1.07);
+}
+
+.cert-meta {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: #6b7280;
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .cert-story {
+        padding: 4rem 0;
+    }
+}
+
+/* ── PROJECTS: Full-width Story Layout ── */
+.project-heading {
+    letter-spacing: -0.02em;
+}
+
+.project-story {
+    position: relative;
+    padding: 5.5rem 0;
+}
+
+.project-story::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+}
+
+.project-story:last-of-type::after {
+    display: none;
+}
+
+.project-tone-1 { background: linear-gradient(120deg, rgba(255,255,255,0.02), transparent 65%); }
+.project-tone-2 { background: linear-gradient(120deg, rgba(16,185,129,0.06), transparent 70%); }
+.project-tone-3 { background: linear-gradient(120deg, rgba(59,130,246,0.06), transparent 70%); }
+.project-tone-4 { background: linear-gradient(120deg, rgba(168,85,247,0.05), transparent 70%); }
+
+.project-title {
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    line-height: 1.08;
+}
+
+.project-desc {
+    max-width: 58ch;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.project-tech span {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-weight: 700;
+    color: rgba(229,231,235,0.92);
+    background: rgba(255,255,255,0.05);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+}
+
+.project-media-wrap {
+    overflow: hidden;
+    min-height: clamp(260px, 34vw, 470px);
+    align-self: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.02);
+}
+
+.project-media-wrap > a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#projects .project-story > .max-w-7xl {
+    align-items: start;
+}
+
+#projects .project-story .project-media-wrap {
+    aspect-ratio: 16 / 10;
+    min-height: auto;
+}
+
+.project-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.8s ease;
+    transform: scale(1.02);
+}
+
+#projects .project-media[src$=".svg"] {
+    object-fit: contain;
+    padding: 0.35rem;
+    transform: scale(1);
+}
+
+.project-story:hover .project-media {
+    transform: scale(1.07);
+}
+
+#projects .project-story:hover .project-media[src$=".svg"] {
+    transform: scale(1.02);
+}
+
+.project-reveal-left,
+.project-reveal-right {
+    opacity: 0;
+    transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.project-reveal-left {
+    transform: translateX(-34px);
+}
+
+.project-reveal-right {
+    transform: translateX(34px);
+}
+
+.project-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 767px) {
+    .project-story {
+        padding: 4.2rem 0;
+    }
+}
+
+@keyframes successPop {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(0) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.success-animation {
+    animation: successPop 0.75s ease-out both;
 }
 </style>
 </head>
@@ -460,121 +650,178 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
     </section>
 
     <!-- ══════════════ PROJECTS ══════════════ -->
-    <section id="projects" class="py-24 px-6 bg-white/[0.01]">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 italic">Featured Work</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div class="glass-card p-10 rounded-3xl group">
-                    <div class="flex justify-between items-start mb-10">
-                        <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-500">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-                        </div>
-                        <span class="text-[10px] code-font text-gray-600">C++ / STL</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Dynamic Heterogeneous Data Structure</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-10">A custom, type-safe container implementing Object-Oriented principles for storing diverse data types efficiently.</p>
-                    <a href="https://github.com/ankursingh23" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:underline">Source Code →</a>
-                </div>
-
-                <div class="glass-card p-10 rounded-3xl group">
-                    <div class="flex justify-between items-start mb-10">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                        </div>
-                        <span class="text-[10px] code-font text-gray-600">DSA / Algorithms</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">File Compression System</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-10">Lossless data compression tool using Huffman Coding algorithm, reducing file sizes significantly while maintaining integrity.</p>
-                    <a href="https://github.com/ankursingh23" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:underline">Source Code →</a>
-                </div>
-            </div>
-
-            <div class="glass-card p-12 rounded-3xl text-center border-dashed border-white/20">
-                <span class="px-4 py-1 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-widest rounded-full border border-yellow-500/20">Coming Soon</span>
-                <h3 class="text-3xl font-bold mt-6 mb-4">Advanced Coding Platform</h3>
-                <p class="text-gray-500 max-w-2xl mx-auto">Building a full-stack backend-heavy project with Django, Dockerized judge systems, and PostgreSQL.</p>
-            </div>
-            
-            <div class="mt-16 text-center">
-                <a href="https://github.com/ankursingh23" target="_blank" class="inline-flex items-center px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.3em] rounded-full hover:bg-emerald-500 transition-all shadow-[0_0_40px_rgba(255,255,255,0.05)]">
-                    See More on GitHub
-                    <img src="https://cdn.simpleicons.org/github/black" class="ml-4 w-5 h-5" alt="GitHub">
-                </a>
+    <section id="projects" class="py-24 bg-white/[0.01]">
+        <div class="px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="project-heading text-4xl md:text-5xl font-bold mb-4">Featured Work</h2>
+                <p class="text-gray-500 code-font text-sm mb-16">~/projects --story-mode</p>
             </div>
         </div>
+
+        <article class="project-story project-tone-1">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-left">
+                    <h3 class="project-title font-bold mb-6">File Compression &amp; Decompression System (C++)</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Built a Huffman Coding engine for efficient lossless compression and decompression using priority queues, bit-level encoding, and optimized file I/O. It delivers up to ~60% file size reduction depending on data patterns.</p>
+                    <div class="project-tech mb-8">
+                        <span>C++</span><span>STL</span><span>File Handling</span><span>Heap</span><span>Bit Manipulation</span>
+                    </div>
+                    <a href="https://github.com/AnkurSingh23/File_compressor" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">View on GitHub →</a>
+                </div>
+                <div class="project-media-wrap project-reveal-right">
+                    <a href="https://github.com/AnkurSingh23/File_compressor" target="_blank" rel="noopener noreferrer" aria-label="Open File Compression project on GitHub">
+                        <img class="project-media" src="images/project-huffman-flow.svg" alt="Huffman compression flow showing input, frequency table, tree, binary encoding and compressed output">
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-story project-tone-2">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-right md:order-2">
+                    <h3 class="project-title font-bold mb-6">Dynamic Heterogeneous Data Structure (C++)</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Designed a custom type-safe container that supports multiple data types through OOP abstractions, enum-based type tracking, and doubly linked list internals. Indexing is accelerated with unordered_map plus operator-overloaded access.</p>
+                    <div class="project-tech mb-8">
+                        <span>C++</span><span>STL</span><span>OOP</span><span>Doubly Linked List</span><span>Unordered Map</span>
+                    </div>
+                    <a href="https://github.com/AnkurSingh23/Dynamic-Heterogeneous-Data-Structure-in-CPP" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">View on GitHub →</a>
+                </div>
+                <div class="project-media-wrap project-reveal-left md:order-1">
+                    <a href="https://github.com/AnkurSingh23/Dynamic-Heterogeneous-Data-Structure-in-CPP" target="_blank" rel="noopener noreferrer" aria-label="Open Dynamic Heterogeneous Data Structure project on GitHub">
+                        <img class="project-media" src="images/project-heterogeneous-polymorphic.svg" alt="Polymorphic heterogeneous C plus plus container showing base pointers to derived type nodes with runtime resolution">
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-story project-tone-3">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-left">
+                    <h3 class="project-title font-bold mb-6">Credit Card Fraud Detection System</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Built a Logistic Regression model on a highly imbalanced dataset with 284K+ transactions. Through feature scaling, EDA, and stratified sampling, the system reaches ~0.92 recall and ~0.97 ROC-AUC for high-risk fraud capture.</p>
+                    <div class="project-tech mb-8">
+                        <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/AnkurSingh23/Credit_Card_Fraud_Detection" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">View on GitHub →</a>
+                </div>
+                <div class="project-media-wrap project-reveal-right">
+                    <a href="https://github.com/AnkurSingh23/Credit_Card_Fraud_Detection" target="_blank" rel="noopener noreferrer" aria-label="Open Credit Card Fraud Detection project on GitHub">
+                        <img class="project-media" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80" alt="Finance and cybersecurity themed visual for fraud detection">
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-story project-tone-4">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-right md:order-2">
+                    <h3 class="project-title font-bold mb-6">Movie Recommendation System (End-to-End)</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Developed a hybrid recommendation engine using KNN and cosine similarity, with NLP-driven feature extraction through TF-IDF and CountVectorizer. Integrated into a Django web app to deliver real-time movie suggestions.</p>
+                    <div class="project-tech mb-8">
+                        <span>Python</span><span>Django</span><span>Scikit-learn</span><span>NLP</span><span>Pandas</span>
+                    </div>
+                    <a href="https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">View on GitHub →</a>
+                </div>
+                <div class="project-media-wrap project-reveal-left md:order-1">
+                    <a href="https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System" target="_blank" rel="noopener noreferrer" aria-label="Open Movie Recommendation project on GitHub">
+                        <img class="project-media" src="images/project-movie-reco-flow.svg" alt="Movie recommendation architecture showing user profile, filtering logic and personalized output list">
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-story project-tone-1">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-left">
+                    <h3 class="project-title font-bold mb-6">Course Management System (Django)</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Built a backend system to manage courses, students, and teachers with relational Django models. Added authentication, full CRUD flows, ORM-based search, and an enhanced admin panel with filtering and structured management.</p>
+                    <div class="project-tech mb-8">
+                        <span>Django</span><span>Python</span><span>SQLite</span><span>HTML</span><span>CSS</span>
+                    </div>
+                    <a href="https://github.com/AnkurSingh23/Django/tree/main/course_management" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">View on GitHub →</a>
+                </div>
+                <div class="project-media-wrap project-reveal-right">
+                    <a href="https://github.com/AnkurSingh23/Django/tree/main/course_management" target="_blank" rel="noopener noreferrer" aria-label="Open Course Management project on GitHub">
+                        <img class="project-media" src="images/project-course-management-flow.svg" alt="Course management architecture showing user flow, Django backend, and relational database entities">
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-story project-tone-2">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-right md:order-2">
+                    <h3 class="project-title font-bold mb-6">Advanced Coding Platform (In Progress)</h3>
+                    <p class="project-desc text-gray-300 text-base md:text-lg leading-relaxed mb-8">Developing a scalable backend-first coding platform with problem management and modular services. The architecture is being shaped for reliable code execution, evaluation pipelines, and performant user-facing workflows.</p>
+                    <div class="project-tech mb-8">
+                        <span>Django</span><span>PostgreSQL</span><span>Python</span>
+                    </div>
+                    <span class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-gray-500">In Local Development · Public Repo Coming Soon</span>
+                </div>
+                <div class="project-media-wrap project-reveal-left md:order-1">
+                    <img class="project-media" src="images/project-coding-platform-system.svg" alt="Coding platform pipeline from editor to compiler executor test validation and scored output">
+                </div>
+            </div>
+        </article>
     </section>
 
-    <!-- ══════════════ CERTIFICATIONS ══════════════ -->
-    <section id="certs" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-2">Certifications</h2>
-            <p class="text-gray-600 code-font text-sm mb-12">~/certs --verified</p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <!-- Cert 1: GFG 160 -->
-                <!--
-                    IMAGE FILE NAME: cert-gfg-dsa.png
-                    Place this file at: images/cert-gfg-dsa.png
-                -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col">
-                    <div class="cert-img-wrap">
-                        <img src="images/cert-gfg-dsa.png" alt="GFG 160 DSA Certificate">
-                    </div>
-                    <h4 class="font-bold text-lg">GFG 160 – DSA & Algorithms</h4>
-                    <p class="text-xs text-gray-500 mb-1 italic">160 Days of Problem Solving</p>
-                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by GeeksforGeeks</p>
-                    <a href="https://www.geeksforgeeks.org/certificate/26d6164aff50e3599304ef0c4f43a943" target="_blank"
-                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
-                        Verify Credentials
-                    </a>
-                </div>
-
-                <!-- Cert 2: HackerRank SQL -->
-                <!--
-                    IMAGE FILE NAME: cert-hackerrank-sql.png
-                    Place this file at: images/cert-hackerrank-sql.png
-                -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col">
-                    <div class="cert-img-wrap">
-                        <img src="images/cert-hackerrank-sql.png" alt="HackerRank SQL Certificate">
-                    </div>
-                    <h4 class="font-bold text-lg">SQL (Intermediate)</h4>
-                    <p class="text-xs text-gray-500 mb-1 italic">SQL Querying & Optimization</p>
-                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by HackerRank</p>
-                    <a href="https://www.hackerrank.com/certificates/1be2e732a7c0" target="_blank"
-                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
-                        Verify Credentials
-                    </a>
-                </div>
-
-                <!-- Cert 3: Django GFG -->
-                <!--
-                    IMAGE FILE NAME: cert-gfg-django.png
-                    Place this file at: images/cert-gfg-django.png
-                -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col">
-                    <div class="cert-img-wrap">
-                        <img src="images/cert-gfg-django.png" alt="Django Framework Certificate">
-                    </div>
-                    <h4 class="font-bold text-lg">Django Framework Certification</h4>
-                    <p class="text-xs text-gray-500 mb-1 italic">Self-Paced Backend Course</p>
-                    <p class="text-[10px] text-gray-700 uppercase tracking-widest mb-6">Issued by GeeksforGeeks</p>
-                    <a href="https://www.geeksforgeeks.org/certificate/1aa61a2f372610beac1066db829eb8ce" target="_blank"
-                       class="mt-auto block w-full text-center py-3 bg-white/5 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-emerald-500/20 hover:bg-emerald-500 hover:text-black transition-all">
-                        Verify Credentials
-                    </a>
-                </div>
-
+    <!-- ══════════════ CERTIFICATES ══════════════ -->
+    <section id="certs" class="pt-16 pb-24 bg-white/[0.01]">
+        <div class="px-6">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="cert-heading text-4xl md:text-5xl font-bold mb-2">Certificates</h2>
+                <p class="text-gray-600 code-font text-sm mb-8">~/certs --verified</p>
             </div>
         </div>
+
+        <article class="cert-story cert-tone-1">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-left">
+                    <h3 class="cert-title font-bold mb-4">GFG 160 – DSA &amp; Algorithms</h3>
+                    <p class="cert-desc text-gray-300 text-base md:text-lg leading-relaxed mb-6">Completed a 160-day consistency track focused on algorithms, pattern recognition, and problem-solving depth across core DSA topics.</p>
+                    <p class="cert-meta mb-7">Issued by GeeksforGeeks</p>
+                    <a href="https://www.geeksforgeeks.org/certificate/26d6164aff50e3599304ef0c4f43a943" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">Verify Credential →</a>
+                </div>
+                <div class="cert-media-wrap project-reveal-right">
+                    <img src="images/cert-gfg-dsa.png" alt="GFG 160 DSA Certificate" class="cert-media">
+                </div>
+            </div>
+        </article>
+
+        <article class="cert-story cert-tone-2">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-right md:order-2">
+                    <h3 class="cert-title font-bold mb-4">SQL (Intermediate)</h3>
+                    <p class="cert-desc text-gray-300 text-base md:text-lg leading-relaxed mb-6">Validated practical SQL proficiency in relational querying, filtering, and optimization workflows for real-world data handling.</p>
+                    <p class="cert-meta mb-7">Issued by HackerRank</p>
+                    <a href="https://www.hackerrank.com/certificates/1be2e732a7c0" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">Verify Credential →</a>
+                </div>
+                <div class="cert-media-wrap project-reveal-left md:order-1">
+                    <img src="images/cert-hackerrank-sql.png" alt="HackerRank SQL Certificate" class="cert-media">
+                </div>
+            </div>
+        </article>
+
+        <article class="cert-story cert-tone-1">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="project-reveal-left">
+                    <h3 class="cert-title font-bold mb-4">Django Framework Certification</h3>
+                    <p class="cert-desc text-gray-300 text-base md:text-lg leading-relaxed mb-6">Completed backend-focused Django training covering models, views, routing, and structured app development with production-minded practices.</p>
+                    <p class="cert-meta mb-7">Issued by GeeksforGeeks</p>
+                    <a href="https://www.geeksforgeeks.org/certificate/1aa61a2f372610beac1066db829eb8ce" target="_blank" rel="noopener noreferrer" class="inline-block text-sm uppercase tracking-[0.22em] font-semibold text-emerald-400 hover:text-emerald-300 transition">Verify Credential →</a>
+                </div>
+                <div class="cert-media-wrap project-reveal-right">
+                    <img src="images/cert-gfg-django.png" alt="Django Framework Certificate" class="cert-media">
+                </div>
+            </div>
+        </article>
     </section>
 
     <!-- ══════════════ EDUCATION / JOURNEY ══════════════ -->
     <section id="education" class="py-20 px-6 border-t border-white/5">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-5xl font-bold mb-20 italic">Education Journey</h2>
+            <p class="text-gray-600 code-font text-sm -mt-16 mb-14">~/education --timeline</p>
             <div class="relative timeline-line space-y-16">
                 <div class="relative pl-16 journey-item opacity-0 translate-y-8 transition-all duration-700">
                     <div class="absolute left-[20px] top-3 w-5 h-5 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981]"></div>
@@ -605,7 +852,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
             <!-- LEFT: info + creative social links -->
             <div>
                 <span class="code-font text-emerald-500 text-[10px] tracking-widest uppercase">// contact.open()</span>
-                <h2 class="text-5xl font-bold italic mt-3 mb-6">Let's build something <span class="text-emerald-500">stable</span>.</h2>
+                <h2 class="text-5xl font-bold italic mt-3 mb-6">Let's engineer something <span class="text-emerald-500">legendary</span>.</h2>
                 <p class="text-gray-500 mb-12 text-base leading-relaxed">
                     Currently open to internship opportunities where I can contribute to high-performance systems and backend logic. Got an interesting problem? Let's talk.
                 </p>
@@ -632,7 +879,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                     </a>
 
                     <!-- Email -->
-                    <a href="mailto:ankurrajput2118@gmail.com"
+                          <a href="mailto:legendankur80@gmail.com"
                        class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-emerald-500/40 hover:bg-emerald-500/[0.04] transition-all duration-300">
                         <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-all">
                             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -642,7 +889,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="text-[10px] code-font text-emerald-500 uppercase tracking-[0.15em] mb-0.5">Email_</div>
-                            <div class="text-sm text-gray-300 group-hover:text-white transition-colors truncate">ankurrajput2118@gmail.com</div>
+                            <div class="text-sm text-gray-300 group-hover:text-white transition-colors truncate">legendankur80@gmail.com</div>
                         </div>
                         <svg class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -650,7 +897,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                     </a>
 
                     <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/ankursingh77/" target="_blank"
+                          <a href="https://www.linkedin.com/in/ankursingh77/" target="_blank" rel="noopener noreferrer"
                        class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-blue-500/40 hover:bg-blue-500/[0.04] transition-all duration-300">
                         <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-all">
                             <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
@@ -667,7 +914,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                     </a>
 
                     <!-- GitHub -->
-                    <a href="https://github.com/ankursingh23" target="_blank"
+                          <a href="https://github.com/ankursingh23" target="_blank" rel="noopener noreferrer"
                        class="group flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:border-purple-500/40 hover:bg-purple-500/[0.04] transition-all duration-300">
                         <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-all">
                             <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
@@ -702,29 +949,31 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                     <!-- Name -->
                     <div class="space-y-1.5">
                         <span class="text-[10px] text-emerald-500 code-font tracking-widest">Identity_Input</span>
-                        <input type="text" id="form-name" placeholder="Your Name" required
+                           <input type="text" id="form-name" name="name" placeholder="Your Name" required
                                class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300">
                     </div>
                     <!-- Email -->
                     <div class="space-y-1.5">
                         <span class="text-[10px] text-emerald-500 code-font tracking-widest">Email_Address</span>
-                        <input type="email" id="form-email" placeholder="name@domain.com" required
+                           <input type="email" id="form-email" name="email" placeholder="name@domain.com" required
                                class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300">
                     </div>
                     <!-- Message -->
                     <div class="space-y-1.5">
                         <span class="text-[10px] text-emerald-500 code-font tracking-widest">Message_Data</span>
-                        <textarea id="form-message" rows="4" placeholder="Briefing..." required
+                        <textarea id="form-message" name="message" rows="4" placeholder="Briefing..." required
                                   class="w-full bg-transparent border-b border-white/10 py-3 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-emerald-500 transition-all duration-300 resize-none"></textarea>
                     </div>
                     <!-- Submit -->
                     <button type="submit" id="form-btn"
-                            class="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] text-[10px] hover:bg-emerald-500 transition-all duration-300 rounded-sm mt-2">
+                            class="w-full py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.3em] text-[10px] hover:bg-emerald-400 transition-all duration-300 rounded-sm mt-2">
                         Transmit Message
                     </button>
+                    <p class="text-[10px] text-gray-500 text-center code-font tracking-wider">Replies within 24 hours</p>
                     <!-- Success state (hidden by default) -->
-                    <div id="form-success" class="hidden text-center py-3 code-font text-emerald-400 text-xs tracking-widest">
-                        ✓ &nbsp;Message transmitted successfully. Standing by.
+                    <div id="form-success" class="hidden text-center py-4 px-3 border border-emerald-500/20 rounded-lg bg-emerald-500/5">
+                        <div class="code-font text-emerald-400 text-sm tracking-widest">✓ THANK YOU!</div>
+                        <p class="text-gray-300 text-xs mt-2">Your message has been sent successfully. I will get back to you soon.</p>
                     </div>
                 </form>
             </div>
@@ -735,6 +984,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
     <!-- ══════════════ FOOTER ══════════════ -->
     <footer class="py-12 px-6 border-t border-white/5 text-center text-[10px] text-gray-700 uppercase tracking-[0.4em] font-medium">
         <p>&copy; 2026 ANKUR SINGH. All systems nominal. Built with Django & Tailwind</p>
+        <p class="mt-4 text-[11px] tracking-[0.08em] normal-case text-gray-500">Last updated: March 2026</p>
     </footer>
 
     <script>
@@ -764,20 +1014,67 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
             journeyObserver.observe(el);
         });
 
-        function handleFormSubmit(e) {
+        const projectRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('project-visible');
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+
+        document.querySelectorAll('.project-reveal-left, .project-reveal-right').forEach(el => {
+            projectRevealObserver.observe(el);
+        });
+
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            const form = e.target;
             const btn = document.getElementById('form-btn');
             const success = document.getElementById('form-success');
+            const name = document.getElementById('form-name').value.trim();
+            success.classList.add('hidden');
+            success.classList.remove('success-animation');
+
             btn.textContent = 'Transmitting...';
             btn.disabled = true;
             btn.classList.add('opacity-50', 'cursor-not-allowed');
-            setTimeout(() => {
+
+            const formData = new FormData(form);
+            formData.append('_subject', `Portfolio Contact from ${name}`);
+            formData.append('_captcha', 'false');
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/legendankur80@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Form submission failed');
+                }
+
                 btn.classList.add('hidden');
                 success.classList.remove('hidden');
+                success.classList.add('success-animation');
                 document.getElementById('form-name').value = '';
                 document.getElementById('form-email').value = '';
                 document.getElementById('form-message').value = '';
-            }, 1200);
+            } catch (error) {
+                btn.textContent = 'Try Again';
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                alert('Message could not be sent right now. Please try again.');
+                return;
+            }
+
+            setTimeout(() => {
+                btn.textContent = 'Transmit Message';
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed', 'hidden');
+                success.classList.add('hidden');
+                success.classList.remove('success-animation');
+            }, 4500);
         }
     </script>
 </body>

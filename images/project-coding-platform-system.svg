@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Advanced Coding Platform Execution Pipeline</title>
+  <desc id="desc">System architecture showing user code submission from editor through multi-language execution, test case validation, hidden tests and performance scoring.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07080e"/>
+      <stop offset="100%" stop-color="#141b2d"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#93c5fd"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .m { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="85" class="t" font-size="42" font-weight="700">Advanced Coding Platform — Execution &amp; Evaluation Architecture</text>
+  <text x="80" y="124" class="t m" font-size="23">User → Editor → Compile/Run Sandbox → Test Validation → Verdict + Metrics</text>
+
+  <rect x="80" y="180" width="320" height="620" rx="18" class="panel"/>
+  <text x="110" y="225" class="t" font-size="26" font-weight="700">User Interaction</text>
+  <rect x="110" y="270" width="260" height="95" rx="12" fill="rgba(16,185,129,0.14)"/>
+  <text x="135" y="325" class="t" font-size="21">Online Code Editor</text>
+  <text x="135" y="348" class="t m mono" font-size="14">syntax highlighting · autocomplete</text>
+
+  <rect x="110" y="390" width="260" height="95" rx="12" fill="rgba(16,185,129,0.14)"/>
+  <text x="135" y="445" class="t" font-size="21">Run / Submit</text>
+  <text x="135" y="468" class="t m mono" font-size="14">source + language + problemId</text>
+
+  <text x="110" y="560" class="t m" font-size="14">Submission is queued for isolated backend execution.</text>
+
+  <rect x="450" y="180" width="700" height="620" rx="18" class="panel"/>
+  <text x="480" y="225" class="t" font-size="26" font-weight="700">Backend Processing Pipeline</text>
+
+  <rect x="480" y="262" width="640" height="88" rx="12" fill="rgba(59,130,246,0.13)" stroke="rgba(59,130,246,0.45)"/>
+  <text x="505" y="312" class="t mono" font-size="16">1) Submission API → Queue Worker (Redis / broker)</text>
+
+  <rect x="480" y="372" width="305" height="165" rx="12" fill="rgba(168,85,247,0.13)" stroke="rgba(168,85,247,0.45)"/>
+  <text x="505" y="413" class="t" font-size="20" font-weight="700">2) Compile / Execute</text>
+  <text x="505" y="445" class="t mono" font-size="16">multi-language runtimes</text>
+  <text x="505" y="473" class="t mono" font-size="16">C++ · Python · Java</text>
+  <text x="505" y="501" class="t mono" font-size="16">sandbox isolation + limits</text>
+
+  <rect x="815" y="372" width="305" height="165" rx="12" fill="rgba(245,158,11,0.13)" stroke="rgba(245,158,11,0.45)"/>
+  <text x="840" y="413" class="t" font-size="20" font-weight="700">3) Test Validation</text>
+  <text x="840" y="445" class="t mono" font-size="16">public tests + hidden tests</text>
+  <text x="840" y="473" class="t mono" font-size="16">diff checker + edge cases</text>
+  <text x="840" y="501" class="t mono" font-size="16">WA / TLE / MLE / AC</text>
+
+  <rect x="480" y="560" width="640" height="205" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="505" y="602" class="t" font-size="22" font-weight="700">4) Evaluation &amp; Result Persistence</text>
+  <text x="505" y="634" class="t mono" font-size="14">real-time stdout/stderr streaming to console panel</text>
+  <text x="505" y="662" class="t mono" font-size="14">metrics: runtime(ms), memory(KB), pass ratio</text>
+  <text x="505" y="690" class="t mono" font-size="14">stores verdict, metrics, and submission history</text>
+
+  <rect x="1200" y="180" width="320" height="620" rx="18" class="panel"/>
+  <text x="1230" y="225" class="t" font-size="26" font-weight="700">Output Panel</text>
+
+  <rect x="1230" y="272" width="260" height="105" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1255" y="318" class="t mono" font-size="18">Verdict: Accepted ✅</text>
+  <text x="1255" y="344" class="t m mono" font-size="14">Passed 18/18 tests</text>
+
+  <rect x="1230" y="400" width="260" height="105" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1255" y="446" class="t mono" font-size="18">Time: 84 ms</text>
+  <text x="1255" y="472" class="t m mono" font-size="14">Memory: 12.4 MB</text>
+
+  <rect x="1230" y="528" width="260" height="135" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1255" y="572" class="t mono" font-size="17">Console Output</text>
+  <text x="1255" y="602" class="t m mono" font-size="13">Case #7 failed → fixed</text>
+  <text x="1255" y="625" class="t m mono" font-size="13">Re-run → all passed</text>
+
+  <line x1="400" y1="470" x2="440" y2="470" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1150" y1="470" x2="1190" y2="470" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

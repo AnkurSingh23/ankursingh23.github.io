@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Polymorphic Heterogeneous Container in C++</title>
+  <desc id="desc">Custom C++ heterogeneous structure where int, string and float are stored through base pointers with runtime polymorphic resolution and direct access.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06070d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c4b5fd"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .m { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="85" class="t" font-size="42" font-weight="700">Dynamic Heterogeneous Container (C++) — Runtime Polymorphism</text>
+  <text x="80" y="124" class="t m" font-size="20">Input Mixed Types → Base Pointers / Derived Nodes → Runtime Resolution → Direct Access</text>
+
+  <rect x="80" y="180" width="320" height="620" rx="18" class="panel"/>
+  <text x="110" y="225" class="t" font-size="26" font-weight="700">Input Values</text>
+  <rect x="110" y="270" width="260" height="95" rx="12" fill="rgba(59,130,246,0.16)"/>
+  <text x="135" y="324" class="t mono" font-size="25">int 42</text>
+  <rect x="110" y="390" width="260" height="95" rx="12" fill="rgba(16,185,129,0.16)"/>
+  <text x="135" y="444" class="t mono" font-size="25">string "ankur"</text>
+  <rect x="110" y="510" width="260" height="95" rx="12" fill="rgba(245,158,11,0.16)"/>
+  <text x="135" y="564" class="t mono" font-size="25">float 3.14f</text>
+
+  <rect x="460" y="180" width="730" height="620" rx="18" class="panel"/>
+  <text x="490" y="225" class="t" font-size="26" font-weight="700">Unified Container (Custom Implementation)</text>
+  <text x="490" y="255" class="t m mono" font-size="14">vector&lt;BaseNode*&gt; / linked nodes storing derived objects</text>
+
+  <rect x="500" y="300" width="200" height="230" rx="14" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.45)"/>
+  <text x="525" y="338" class="t" font-size="19" font-weight="700">Base Pointer [0]</text>
+  <text x="525" y="370" class="t mono" font-size="16">BaseNode* → IntNode</text>
+  <text x="525" y="404" class="t mono" font-size="16">virtual asString()</text>
+  <text x="525" y="438" class="t mono" font-size="16">value = 42</text>
+
+  <rect x="725" y="300" width="200" height="230" rx="14" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="750" y="338" class="t" font-size="19" font-weight="700">Base Pointer [1]</text>
+  <text x="750" y="370" class="t mono" font-size="16">BaseNode* → StringNode</text>
+  <text x="750" y="404" class="t mono" font-size="16">virtual asString()</text>
+  <text x="750" y="438" class="t mono" font-size="16">value = "ankur"</text>
+
+  <rect x="950" y="300" width="200" height="230" rx="14" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.45)"/>
+  <text x="975" y="338" class="t" font-size="19" font-weight="700">Base Pointer [2]</text>
+  <text x="975" y="370" class="t mono" font-size="16">BaseNode* → FloatNode</text>
+  <text x="975" y="404" class="t mono" font-size="16">virtual asString()</text>
+  <text x="975" y="438" class="t mono" font-size="16">value = 3.14f</text>
+
+  <text x="500" y="595" class="t" font-size="22" font-weight="700">Runtime Resolution</text>
+  <text x="500" y="628" class="t mono" font-size="14">Polymorphic dispatch resolves actual node behavior at runtime.</text>
+  <text x="500" y="656" class="t mono" font-size="14">No explicit get&lt;type&gt; requested by caller.</text>
+  <text x="500" y="684" class="t mono" font-size="14">Static C++ API feels dynamic while staying type-safe.</text>
+
+  <rect x="1240" y="180" width="280" height="620" rx="18" class="panel"/>
+  <text x="1270" y="225" class="t" font-size="26" font-weight="700">Access Flow</text>
+  <text x="1270" y="295" class="t mono" font-size="17">auto x = *list[0];</text>
+  <text x="1270" y="330" class="t mono" font-size="17">→ 42</text>
+  <text x="1270" y="390" class="t mono" font-size="17">auto y = *list[1];</text>
+  <text x="1270" y="425" class="t mono" font-size="17">→ "ankur"</text>
+  <text x="1270" y="485" class="t mono" font-size="17">auto z = *list[2];</text>
+  <text x="1270" y="520" class="t mono" font-size="17">→ 3.14f</text>
+  <text x="1270" y="610" class="t m" font-size="15">Derived Type Nodes
+  </text>
+  <text x="1270" y="636" class="t m" font-size="15">Base Pointer abstraction</text>
+  <text x="1270" y="662" class="t m" font-size="15">Runtime Resolution</text>
+
+  <line x1="400" y1="460" x2="450" y2="460" stroke="#c4b5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1190" y1="460" x2="1230" y2="460" stroke="#c4b5fd" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Dynamic Heterogeneous Data Structure Flow</title>
+  <desc id="desc">Different data types entering a C++ container with type tags, linked nodes and runtime-safe access.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05070b"/>
+      <stop offset="100%" stop-color="#0c1420"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#93c5fd"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .muted { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="90" y="90" class="t" font-size="42" font-weight="700">Dynamic Heterogeneous Data Structure (C++)</text>
+  <text x="90" y="130" class="t muted" font-size="24">Multiple types → Type-safe runtime storage → Indexed retrieval</text>
+
+  <rect x="90" y="180" width="300" height="540" rx="18" class="panel"/>
+  <text x="120" y="225" class="t" font-size="26" font-weight="700">Input Stream</text>
+  <rect x="120" y="270" width="240" height="70" rx="12" fill="rgba(59,130,246,0.16)"/><text x="145" y="314" class="t mono" font-size="24">int 42</text>
+  <rect x="120" y="360" width="240" height="70" rx="12" fill="rgba(16,185,129,0.16)"/><text x="145" y="404" class="t mono" font-size="24">string "ankur"</text>
+  <rect x="120" y="450" width="240" height="70" rx="12" fill="rgba(245,158,11,0.16)"/><text x="145" y="494" class="t mono" font-size="24">float 3.14f</text>
+  <text x="120" y="575" class="t muted" font-size="16">API accepts typed values through overloaded insertion methods.</text>
+
+  <rect x="450" y="180" width="680" height="540" rx="18" class="panel"/>
+  <text x="480" y="225" class="t" font-size="26" font-weight="700">Internal Container (Doubly Linked Nodes)</text>
+
+  <rect x="500" y="300" width="180" height="220" rx="14" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.45)"/>
+  <text x="525" y="340" class="t mono" font-size="17">type: INT</text>
+  <text x="525" y="375" class="t mono" font-size="17">value: 42</text>
+  <text x="525" y="410" class="t mono" font-size="17">prev: null</text>
+  <text x="525" y="445" class="t mono" font-size="17">next: Node2</text>
+
+  <rect x="715" y="300" width="180" height="220" rx="14" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="740" y="340" class="t mono" font-size="17">type: STRING</text>
+  <text x="740" y="375" class="t mono" font-size="17">value: "ankur"</text>
+  <text x="740" y="410" class="t mono" font-size="17">prev: Node1</text>
+  <text x="740" y="445" class="t mono" font-size="17">next: Node3</text>
+
+  <rect x="930" y="300" width="180" height="220" rx="14" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.45)"/>
+  <text x="955" y="340" class="t mono" font-size="17">type: FLOAT</text>
+  <text x="955" y="375" class="t mono" font-size="17">value: 3.14</text>
+  <text x="955" y="410" class="t mono" font-size="17">prev: Node2</text>
+  <text x="955" y="445" class="t mono" font-size="17">next: null</text>
+
+  <line x1="680" y1="410" x2="710" y2="410" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="895" y1="410" x2="925" y2="410" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="930" y1="455" x2="900" y2="455" stroke="#93c5fd" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="715" y1="455" x2="685" y2="455" stroke="#93c5fd" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="480" y="595" class="t muted" font-size="16">Enum tag + union/object wrapper enforces type-safe access at runtime.</text>
+
+  <rect x="1180" y="180" width="330" height="540" rx="18" class="panel"/>
+  <text x="1210" y="225" class="t" font-size="26" font-weight="700">Output / Access</text>
+  <text x="1210" y="280" class="t mono" font-size="18">get&lt;int&gt;(0)      → 42</text>
+  <text x="1210" y="320" class="t mono" font-size="18">get&lt;string&gt;(1)   → "ankur"</text>
+  <text x="1210" y="360" class="t mono" font-size="18">get&lt;float&gt;(2)    → 3.14</text>
+  <text x="1210" y="430" class="t mono" font-size="18">unordered_map index</text>
+  <text x="1210" y="460" class="t mono" font-size="18">key → node pointer</text>
+  <text x="1210" y="540" class="t muted" font-size="16">Static language, dynamic behavior.</text>
+  <text x="1210" y="565" class="t muted" font-size="16">Fast lookup + flexible storage.</text>
+
+  <line x1="390" y1="450" x2="440" y2="450" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="450" x2="1170" y2="450" stroke="#93c5fd" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

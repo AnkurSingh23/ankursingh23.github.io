@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Movie Recommendation Engine Architecture</title>
+  <desc id="desc">System visual showing user preferences and watch history flowing through recommendation logic using collaborative and content-based filtering to generate personalized output.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06070c"/>
+      <stop offset="100%" stop-color="#0f1725"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#86efac"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .m { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="85" class="t" font-size="42" font-weight="700">Movie Recommendation Engine — System Flow</text>
+  <text x="80" y="124" class="t m" font-size="23">User Input → Feature Processing → Similarity/Ranking → Personalized Recommendations</text>
+
+  <rect x="80" y="180" width="370" height="620" rx="18" class="panel"/>
+  <text x="110" y="225" class="t" font-size="26" font-weight="700">User Profile Data</text>
+  <rect x="110" y="260" width="310" height="84" rx="12" fill="rgba(16,185,129,0.14)"/>
+  <text x="136" y="312" class="t mono" font-size="17">Preferred Genres: Sci-Fi, Drama</text>
+  <rect x="110" y="360" width="310" height="84" rx="12" fill="rgba(16,185,129,0.14)"/>
+  <text x="136" y="412" class="t mono" font-size="17">Ratings: Inception ★★★★★</text>
+  <rect x="110" y="460" width="310" height="84" rx="12" fill="rgba(16,185,129,0.14)"/>
+  <text x="136" y="512" class="t mono" font-size="17">Watch History: 126 titles</text>
+  <text x="110" y="595" class="t m" font-size="15">Inputs are converted into user vectors and preference weights.</text>
+
+  <rect x="500" y="180" width="570" height="620" rx="18" class="panel"/>
+  <text x="530" y="225" class="t" font-size="26" font-weight="700">Processing &amp; Recommendation Logic</text>
+
+  <rect x="530" y="262" width="510" height="105" rx="12" fill="rgba(59,130,246,0.13)" stroke="rgba(59,130,246,0.45)"/>
+  <text x="558" y="306" class="t mono" font-size="17">Movie DB Features: genre · tags · cast · rating</text>
+  <text x="558" y="335" class="t m mono" font-size="16">TF-IDF / vectors / metadata embedding</text>
+
+  <rect x="530" y="390" width="245" height="175" rx="12" fill="rgba(168,85,247,0.13)" stroke="rgba(168,85,247,0.45)"/>
+  <text x="550" y="430" class="t" font-size="20" font-weight="700">Content-Based</text>
+  <text x="550" y="462" class="t mono" font-size="16">cosine(user, movie)</text>
+  <text x="550" y="490" class="t mono" font-size="16">similar tags/genres</text>
+
+  <rect x="795" y="390" width="245" height="175" rx="12" fill="rgba(245,158,11,0.13)" stroke="rgba(245,158,11,0.45)"/>
+  <text x="815" y="430" class="t" font-size="20" font-weight="700">Collaborative</text>
+  <text x="815" y="462" class="t mono" font-size="16">user-user / item-item</text>
+  <text x="815" y="490" class="t mono" font-size="16">neighborhood scoring</text>
+
+  <rect x="530" y="592" width="510" height="170" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="555" y="635" class="t" font-size="22" font-weight="700">Ranking &amp; Personalization Layer</text>
+  <text x="555" y="667" class="t mono" font-size="15">score = α·content + β·collab + recency_penalty</text>
+  <text x="555" y="697" class="t mono" font-size="15">filters watched titles and boosts preferred genres</text>
+
+  <rect x="1120" y="180" width="400" height="620" rx="18" class="panel"/>
+  <text x="1150" y="225" class="t" font-size="26" font-weight="700">Output Recommendations</text>
+
+  <rect x="1150" y="270" width="340" height="130" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1175" y="315" class="t" font-size="22" font-weight="700">1. Interstellar</text>
+  <text x="1175" y="345" class="t m mono" font-size="15">match: sci-fi + high similarity</text>
+
+  <rect x="1150" y="425" width="340" height="130" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1175" y="470" class="t" font-size="22" font-weight="700">2. The Martian</text>
+  <text x="1175" y="500" class="t m mono" font-size="15">match: watched profile neighbors</text>
+
+  <rect x="1150" y="580" width="340" height="130" rx="12" fill="rgba(255,255,255,0.06)"/>
+  <text x="1175" y="625" class="t" font-size="22" font-weight="700">3. Arrival</text>
+  <text x="1175" y="655" class="t m mono" font-size="15">match: NLP tag relevance</text>
+
+  <line x1="450" y1="490" x2="490" y2="490" stroke="#86efac" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1070" y1="490" x2="1110" y2="490" stroke="#86efac" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

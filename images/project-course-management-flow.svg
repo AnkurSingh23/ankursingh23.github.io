@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Course Management System Architecture Flow</title>
+  <desc id="desc">Users authenticate, access dashboard, interact with Student Teacher Course entities through Django backend and database.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06070d"/>
+      <stop offset="100%" stop-color="#101523"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#34d399"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .muted { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="90" y="90" class="t" font-size="42" font-weight="700">Course Management System (Django)</text>
+  <text x="90" y="130" class="t muted" font-size="24">User Flow + Backend Logic + Relational Data Model</text>
+
+  <rect x="90" y="190" width="320" height="510" rx="18" class="panel"/>
+  <text x="120" y="235" class="t" font-size="26" font-weight="700">Frontend / User Journey</text>
+  <rect x="120" y="280" width="260" height="70" rx="12" fill="rgba(16,185,129,0.14)"/><text x="145" y="324" class="t" font-size="22">Login / Register</text>
+  <rect x="120" y="375" width="260" height="70" rx="12" fill="rgba(16,185,129,0.14)"/><text x="145" y="419" class="t" font-size="22">Role Dashboard</text>
+  <rect x="120" y="470" width="260" height="70" rx="12" fill="rgba(16,185,129,0.14)"/><text x="145" y="514" class="t" font-size="22">CRUD + Search</text>
+  <text x="120" y="595" class="t muted" font-size="14">Admin / Teacher / Student actions follow one secured API flow.</text>
+
+  <rect x="470" y="190" width="480" height="510" rx="18" class="panel"/>
+  <text x="500" y="235" class="t" font-size="26" font-weight="700">Django Backend</text>
+  <rect x="500" y="280" width="420" height="80" rx="12" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.45)"/>
+  <text x="525" y="328" class="t mono" font-size="20">Auth Middleware + Session Control</text>
+
+  <rect x="500" y="380" width="200" height="130" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="530" y="425" class="t mono" font-size="20">Views</text>
+  <text x="530" y="455" class="t muted mono" font-size="15">create / update / delete</text>
+
+  <rect x="720" y="380" width="200" height="130" rx="12" fill="rgba(168,85,247,0.12)" stroke="rgba(168,85,247,0.45)"/>
+  <text x="750" y="425" class="t mono" font-size="20">Django ORM</text>
+  <text x="750" y="455" class="t muted mono" font-size="15">query + filters + search</text>
+
+  <rect x="500" y="535" width="420" height="130" rx="12" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.45)"/>
+  <text x="530" y="585" class="t mono" font-size="20">Admin Panel Customization</text>
+  <text x="530" y="615" class="t muted mono" font-size="15">list filters · custom forms · data ops</text>
+
+  <rect x="1010" y="190" width="500" height="510" rx="18" class="panel"/>
+  <text x="1040" y="235" class="t" font-size="26" font-weight="700">Relational Database (SQLite)</text>
+
+  <rect x="1040" y="290" width="145" height="90" rx="10" fill="rgba(255,255,255,0.06)"/><text x="1075" y="344" class="t mono" font-size="18">Student</text>
+  <rect x="1210" y="290" width="145" height="90" rx="10" fill="rgba(255,255,255,0.06)"/><text x="1245" y="344" class="t mono" font-size="18">Teacher</text>
+  <rect x="1380" y="290" width="100" height="90" rx="10" fill="rgba(255,255,255,0.06)"/><text x="1399" y="344" class="t mono" font-size="18">Course</text>
+  <rect x="1150" y="440" width="170" height="90" rx="10" fill="rgba(255,255,255,0.06)"/><text x="1180" y="494" class="t mono" font-size="18">Category</text>
+
+  <line x1="1115" y1="380" x2="1235" y2="440" stroke="#6ee7b7" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1285" y1="380" x2="1235" y2="440" stroke="#6ee7b7" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1430" y1="380" x2="1235" y2="440" stroke="#6ee7b7" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="1040" y="590" class="t muted" font-size="14">Models linked with foreign keys and relational constraints.</text>
+  <text x="1040" y="620" class="t muted" font-size="14">Search + CRUD updates instantly on dashboard views.</text>
+
+  <line x1="410" y1="445" x2="460" y2="445" stroke="#34d399" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="950" y1="445" x2="995" y2="445" stroke="#34d399" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

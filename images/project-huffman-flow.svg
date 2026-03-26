@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Huffman Compression Internal Flow</title>
+  <desc id="desc">Input file to frequency table, Huffman tree, binary encoding and compressed output with size reduction.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05070b"/>
+      <stop offset="100%" stop-color="#0f1720"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6ee7b7"/>
+    </marker>
+    <style>
+      .panel { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.14); }
+      .t { font-family: Inter, Arial, sans-serif; fill: #e5e7eb; }
+      .muted { fill: #9ca3af; }
+      .mono { font-family: 'Fira Code', Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="90" y="90" class="t" font-size="42" font-weight="700">File Compression &amp; Decompression — Huffman Coding</text>
+  <text x="90" y="130" class="t muted" font-size="24">Input → Frequency Analysis → Huffman Tree → Bit Encoding → Compressed Output</text>
+
+  <rect x="90" y="190" width="260" height="520" rx="18" class="panel"/>
+  <text x="120" y="235" class="t" font-size="26" font-weight="700">Input File</text>
+  <text x="120" y="270" class="t muted mono" font-size="15">BANANA_BANDANA.txt</text>
+  <text x="120" y="330" class="t mono" font-size="16">B A N A N A _ B A N D A N A</text>
+  <text x="120" y="380" class="t muted mono" font-size="18">Raw Size: 120 KB</text>
+
+  <rect x="400" y="190" width="270" height="520" rx="18" class="panel"/>
+  <text x="430" y="235" class="t" font-size="26" font-weight="700">Frequency Table</text>
+  <text x="430" y="280" class="t mono" font-size="20">A : 6</text>
+  <text x="430" y="315" class="t mono" font-size="20">N : 4</text>
+  <text x="430" y="350" class="t mono" font-size="20">B : 2</text>
+  <text x="430" y="385" class="t mono" font-size="20">_ : 1</text>
+  <text x="430" y="420" class="t mono" font-size="20">D : 1</text>
+  <text x="430" y="470" class="t muted" font-size="14">Min-heap merges lowest-frequency nodes first</text>
+
+  <rect x="720" y="190" width="360" height="520" rx="18" class="panel"/>
+  <text x="750" y="235" class="t" font-size="26" font-weight="700">Huffman Tree</text>
+  <line x1="900" y1="300" x2="820" y2="380" stroke="#6ee7b7" stroke-width="3"/>
+  <line x1="900" y1="300" x2="980" y2="380" stroke="#6ee7b7" stroke-width="3"/>
+  <line x1="820" y1="380" x2="770" y2="470" stroke="#6ee7b7" stroke-width="3"/>
+  <line x1="820" y1="380" x2="860" y2="470" stroke="#6ee7b7" stroke-width="3"/>
+  <line x1="980" y1="380" x2="940" y2="470" stroke="#6ee7b7" stroke-width="3"/>
+  <line x1="980" y1="380" x2="1030" y2="470" stroke="#6ee7b7" stroke-width="3"/>
+  <circle cx="900" cy="300" r="28" fill="url(#accent)"/><text x="892" y="307" class="t mono" font-size="16">14</text>
+  <circle cx="820" cy="380" r="24" fill="#0f766e"/><text x="813" y="386" class="t mono" font-size="14">6</text>
+  <circle cx="980" cy="380" r="24" fill="#0f766e"/><text x="973" y="386" class="t mono" font-size="14">8</text>
+  <circle cx="770" cy="470" r="20" fill="#111827" stroke="#6ee7b7"/><text x="764" y="476" class="t mono" font-size="13">A</text>
+  <circle cx="860" cy="470" r="20" fill="#111827" stroke="#6ee7b7"/><text x="854" y="476" class="t mono" font-size="13">N</text>
+  <circle cx="940" cy="470" r="20" fill="#111827" stroke="#6ee7b7"/><text x="934" y="476" class="t mono" font-size="13">B</text>
+  <circle cx="1030" cy="470" r="20" fill="#111827" stroke="#6ee7b7"/><text x="1022" y="476" class="t mono" font-size="13">_D</text>
+  <text x="760" y="550" class="t mono" font-size="16">A=0  N=10  B=110  _=1110  D=1111</text>
+
+  <rect x="1130" y="190" width="380" height="520" rx="18" class="panel"/>
+  <text x="1160" y="235" class="t" font-size="26" font-weight="700">Bitstream + Output</text>
+  <text x="1160" y="290" class="t mono" font-size="17">0101001011011100110...</text>
+  <text x="1160" y="325" class="t mono" font-size="17">Packed into bytes + metadata</text>
+  <rect x="1160" y="370" width="320" height="115" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)"/>
+  <text x="1185" y="420" class="t" font-size="28" font-weight="700">Compressed: 48 KB</text>
+  <text x="1185" y="455" class="t muted" font-size="22">≈ 60% size reduction</text>
+  <text x="1160" y="550" class="t muted" font-size="14">Decoder reads tree header and restores original bytes exactly.</text>
+
+  <line x1="350" y1="450" x2="390" y2="450" stroke="#6ee7b7" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="670" y1="450" x2="710" y2="450" stroke="#6ee7b7" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1080" y1="450" x2="1120" y2="450" stroke="#6ee7b7" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>
