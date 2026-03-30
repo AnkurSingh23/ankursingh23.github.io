@@ -1,3 +1,6 @@
+
+
+
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -7,6 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
   });
 });
+
 
 const texts = [
   "Backend Developer",
