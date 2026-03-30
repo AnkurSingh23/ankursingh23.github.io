@@ -18,7 +18,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
 .glass-card:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04); transform: translateY(-5px); }
 
 /* Interactive Elements */
-.gradient-text { background: linear-gradient(135deg, #fff 30%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.gradient-text { background: linear-gradient(135deg, #fff 30%, #10b981 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .timeline-line::after { content: ''; position: absolute; width: 2px; background: linear-gradient(to bottom, #10b981, transparent); top: 0; bottom: 0; left: 20px; }
 
 /* Custom Scrollbar */
@@ -36,14 +36,47 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
 }
 .skills-row2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 70%;
+    max-width: 100%;
     margin: 0 auto;
 }
 @media (max-width: 768px) {
     .skills-row1 { grid-template-columns: 1fr; }
     .skills-row2 { grid-template-columns: 1fr; max-width: 100%; }
+}
+
+/* ── ACHIEVEMENTS ── */
+.milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.milestone-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.35s ease;
+}
+
+.milestone-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(16,185,129,0.4);
+    background: rgba(16,185,129,0.05);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.35);
+}
+
+.milestone-value {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+@media (max-width: 1024px) {
+    .milestone-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Skill Card (BIGGER + PREMIUM) ── */
@@ -335,6 +368,59 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
 .success-animation {
     animation: successPop 0.75s ease-out both;
 }
+
+@keyframes terminalBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@keyframes terminalLineIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.terminal-cursor {
+    display: inline-block;
+    animation: terminalBlink 1s steps(1, end) infinite;
+}
+
+.terminal-line-enter {
+    animation: terminalLineIn 0.38s ease-out both;
+}
+
+@keyframes terminalFloat {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 10px)); }
+}
+
+@keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.35); }
+    50% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+}
+
+.hero-live-terminal {
+    animation: terminalFloat 5s ease-in-out infinite;
+}
+
+.hero-live-terminal-shell {
+    background: linear-gradient(145deg, rgba(2,6,23,0.82), rgba(3,3,3,0.88));
+    border: 1px solid rgba(16,185,129,0.35);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.6), 0 0 35px rgba(16,185,129,0.2);
+}
+
+.live-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #10b981;
+    animation: livePulse 1.5s ease-out infinite;
+}
 </style>
 </head>
 <body class="selection:bg-emerald-500/30">
@@ -354,6 +440,7 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
             <a href="#skills"    class="hover:text-emerald-400 transition-colors">Skills</a>
             <a href="#projects"  class="hover:text-emerald-400 transition-colors">Projects</a>
             <a href="#certs"     class="hover:text-emerald-400 transition-colors">Certificates</a>
+            <a href="#achievements" class="hover:text-emerald-400 transition-colors">Milestones</a>
             <a href="#education" class="hover:text-emerald-400 transition-colors">Journey</a>
         </div>
 
@@ -399,34 +486,35 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
         </div>
 
         <!-- RIGHT SIDE TERMINAL (IMPROVED) -->
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block w-[460px]">
-            <div class="bg-black/60 border border-white/10 rounded-xl p-6 backdrop-blur-xl shadow-2xl h-[300px]">
+        <div class="absolute right-0 top-1/2 hidden lg:block w-[560px] hero-live-terminal">
+            <div class="hero-live-terminal-shell rounded-2xl p-7 backdrop-blur-xl h-[380px]">
                 
                 <!-- header -->
-                <div class="flex gap-2 mb-5">
-                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    <div class="flex items-center gap-2 border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 px-3 py-1 rounded-full">
+                        <span class="live-dot"></span>
+                        <span class="code-font text-[10px] tracking-[0.14em]">ANKUR CORE CONSOLE</span>
+                    </div>
                 </div>
 
                 <!-- content -->
-                <div class="space-y-2 code-font text-sm">
-                    
-                    <p class="text-gray-400">
-                        <span class="text-emerald-400">ankur@system</span>:~$ boot sequence initiated
+                <div class="space-y-2.5 code-font text-base" id="hero-terminal">
+                    <p class="text-gray-300" id="terminal-command-line">
+                        <span class="text-emerald-400">ankur@system</span>:~$ <span id="terminal-command-text"></span><span class="terminal-cursor">|</span>
                     </p>
 
-                    <p class="text-gray-500 animate-pulse">
+                    <p class="text-gray-500 animate-pulse hidden" id="terminal-loader">
                         loading modules...
                     </p>
 
-                    <p class="text-gray-400"><span class="text-blue-400">✔</span> memory allocated</p>
-                    <p class="text-gray-400"><span class="text-blue-400">✔</span> threads initialized</p>
-                    <p class="text-gray-400"><span class="text-blue-400">✔</span> api endpoints active</p>
-                    <p class="text-gray-400"><span class="text-blue-400">✔</span> database connected</p>
-                    <p class="text-gray-400"><span class="text-blue-400">✔</span> system stable</p>
+                    <div id="terminal-status-lines" class="space-y-1"></div>
 
-                    <p class="text-emerald-400 mt-3">
+                    <p class="text-emerald-400 mt-3 hidden" id="terminal-ready">
                         ready to deploy 🚀
                     </p>
                 </div>
@@ -644,6 +732,33 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                     </div>
                 </div>
 
+                <!-- 06. Soft Skills -->
+                <div class="skill-card">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-emerald-300 mb-6">06. Soft Skills</h3>
+                    <div class="space-y-1">
+                        <div class="skill-item">
+                            <span class="skill-badge text-emerald-300">COM</span>
+                            <span class="text-sm text-gray-200">Communication</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-blue-300">TEAM</span>
+                            <span class="text-sm text-gray-200">Team Collaboration</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-purple-300">PS</span>
+                            <span class="text-sm text-gray-200">Problem Solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-yellow-300">LD</span>
+                            <span class="text-sm text-gray-200">Leadership &amp; Ownership</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-badge text-pink-300">ADP</span>
+                            <span class="text-sm text-gray-200">Adaptability &amp; Time Management</span>
+                        </div>
+                    </div>
+                </div>
+
             </div><!-- /row2 -->
 
         </div>
@@ -815,6 +930,34 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
                 </div>
             </div>
         </article>
+    </section>
+
+    <!-- ══════════════ ACHIEVEMENTS & MILESTONES ══════════════ -->
+    <section id="achievements" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-3">Achievements &amp; Milestones</h2>
+            <p class="text-gray-600 code-font text-sm mb-14">~/achievements --competitive-coding</p>
+
+            <div class="milestone-grid">
+                <article class="milestone-card">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-emerald-400 code-font mb-4">01. Problem Solving Scale</p>
+                    <p class="milestone-value text-white mb-4">1100+</p>
+                    <p class="text-gray-300 leading-relaxed">DSA and algorithmic based questions solved across LeetCode, HackerRank, and Code360.</p>
+                </article>
+
+                <article class="milestone-card">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-blue-400 code-font mb-4">02. Institute Coding Rank</p>
+                    <p class="milestone-value text-white mb-4">30</p>
+                    <p class="text-gray-300 leading-relaxed">Secured institute coding rank 30 on GeeksforGeeks through consistent performance.</p>
+                </article>
+
+                <article class="milestone-card">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-purple-400 code-font mb-4">03. Badges Earned</p>
+                    <p class="milestone-value text-white mb-4">44</p>
+                    <p class="text-gray-300 leading-relaxed">Earned 44 coding badges across key DSA tracks, reflecting depth across multiple topics.</p>
+                </article>
+            </div>
+        </div>
     </section>
 
     <!-- ══════════════ EDUCATION / JOURNEY ══════════════ -->
@@ -1025,6 +1168,54 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #ed
         document.querySelectorAll('.project-reveal-left, .project-reveal-right').forEach(el => {
             projectRevealObserver.observe(el);
         });
+
+        const terminalSleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function runHeroTerminalAnimation() {
+            const commandText = document.getElementById('terminal-command-text');
+            const loader = document.getElementById('terminal-loader');
+            const statusContainer = document.getElementById('terminal-status-lines');
+            const readyLine = document.getElementById('terminal-ready');
+
+            if (!commandText || !loader || !statusContainer || !readyLine) {
+                return;
+            }
+
+            const command = 'boot sequence initiated';
+            const statusLines = [
+                'memory allocated',
+                'threads initialized',
+                'api endpoints active',
+                'database connected',
+                'system stable'
+            ];
+
+            commandText.textContent = '';
+            statusContainer.innerHTML = '';
+
+            for (const char of command) {
+                commandText.textContent += char;
+                await terminalSleep(36);
+            }
+
+            await terminalSleep(260);
+            loader.classList.remove('hidden');
+
+            for (const line of statusLines) {
+                await terminalSleep(320);
+                const statusLine = document.createElement('p');
+                statusLine.className = 'text-gray-400 terminal-line-enter';
+                statusLine.innerHTML = '<span class="text-blue-400">✔</span> ' + line;
+                statusContainer.appendChild(statusLine);
+            }
+
+            await terminalSleep(280);
+            loader.classList.add('hidden');
+            readyLine.classList.remove('hidden');
+            readyLine.classList.add('terminal-line-enter');
+        }
+
+        runHeroTerminalAnimation();
 
         async function handleFormSubmit(e) {
             e.preventDefault();
